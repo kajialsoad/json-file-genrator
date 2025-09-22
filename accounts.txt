@@ -1,0 +1,15 @@
+# Gmail OAuth Client Generator - Sample Accounts File
+# স্যাম্পল অ্যাকাউন্ট ফাইল
+# 
+# Format: email:password
+# ফরম্যাট: ইমেল:পাসওয়ার্ড
+# 
+# Example:
+# user1@gmail.com:password123
+# user2@gmail.com:mypassword456
+# user3@gmail.com:secretpass789
+
+# আপনার অ্যাকাউন্টগুলো এখানে যোগ করুন:
+# (# দিয়ে শুরু হওয়া লাইনগুলো কমেন্ট, এগুলো প্রক্রিয়া করা হবে না)
+
+nilamb010@gmail.com:,lkjghf9854

@@ -1,0 +1,27 @@
+# Gmail OAuth Client JSON Generator Requirements
+# স্বয়ংক্রিয় জিমেইল OAuth ক্লায়েন্ট জেনারেটর প্রয়োজনীয় লাইব্রেরি
+
+# Web automation
+selenium>=4.15.0
+
+# Google API libraries
+google-auth>=2.23.0
+google-auth-oauthlib>=1.1.0
+google-auth-httplib2>=0.1.1
+google-api-python-client>=2.100.0
+
+# Web driver manager (for automatic ChromeDriver management)
+webdriver-manager>=4.0.0
+
+# Additional utilities
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# For .exe packaging
+pyinstaller>=6.0.0
+
+# Process management
+psutil>=5.9.0
+
+# GUI enhancements (optional)
+pillow>=10.0.0
