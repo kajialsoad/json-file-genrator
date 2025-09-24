@@ -1,0 +1,46 @@
+[
+  {
+    "account_number": 1,
+    "email": "diazdfc41@gmail.com",
+    "login_success": false,
+    "project_created": false,
+    "api_enabled": false,
+    "oauth_created": false,
+    "json_downloaded": false,
+    "overall_success": false,
+    "error_message": null
+  },
+  {
+    "account_number": 2,
+    "email": "nilamb010@gmail.com",
+    "login_success": false,
+    "project_created": false,
+    "api_enabled": false,
+    "oauth_created": false,
+    "json_downloaded": false,
+    "overall_success": false,
+    "error_message": "Failed to enter password"
+  },
+  {
+    "account_number": 3,
+    "email": "laureparis24@gmail.com",
+    "login_success": false,
+    "project_created": false,
+    "api_enabled": false,
+    "oauth_created": false,
+    "json_downloaded": false,
+    "overall_success": false,
+    "error_message": "Message: invalid session id: session deleted as the browser has closed the connection\nfrom disconnected: not connected to DevTools\n  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception\nStacktrace:\n\tGetHandleVerifier [0x0x6e0c13+66051]\n\tGetHandleVerifier [0x0x6e0c54+66116]\n\t(No symbol) [0x0x4bdb33]\n\t(No symbol) [0x0x4acfd0]\n\t(No symbol) [0x0x4cb6db]\n\t(No symbol) [0x0x5309b5]\n\t(No symbol) [0x0x54b109]\n\t(No symbol) [0x0x529d86]\n\t(No symbol) [0x0x4fb53e]\n\t(No symbol) [0x0x4fc414]\n\tGetHandleVerifier [0x0x928a13+2457603]\n\tGetHandleVerifier [0x0x9239d2+2437058]\n\tGetHandleVerifier [0x0x7097f2+232930]\n\tGetHandleVerifier [0x0x6f9a18+167944]\n\tGetHandleVerifier [0x0x70092d+196381]\n\tGetHandleVerifier [0x0x6e8ee8+99544]\n\tGetHandleVerifier [0x0x6e9082+99954]\n\tGetHandleVerifier [0x0x6d322a+10266]\n\tBaseThreadInitThunk [0x0x76a05d49+25]\n\tRtlInitializeExceptionChain [0x0x7795d6db+107]\n\tRtlGetAppContainerNamedObjectPath [0x0x7795d661+561]\n"
+  },
+  {
+    "account_number": 4,
+    "email": "kannanfdjm987@gmail.com",
+    "login_success": false,
+    "project_created": false,
+    "api_enabled": false,
+    "oauth_created": false,
+    "json_downloaded": false,
+    "overall_success": false,
+    "error_message": "Failed to enter password"
+  }
+]

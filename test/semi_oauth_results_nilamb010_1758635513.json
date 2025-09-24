@@ -1,0 +1,14 @@
+{
+  "email": "nilamb010@gmail.com",
+  "timestamp": 1758635493,
+  "status": "completed_with_errors",
+  "steps_completed": [
+    "driver_setup"
+  ],
+  "errors": [
+    "Login failed: Message: \nStacktrace:\n\tGetHandleVerifier [0x0x7ff685e530f5+79493]\n\tGetHandleVerifier [0x0x7ff685e53150+79584]\n\t(No symbol) [0x0x7ff685bd01ba]\n\t(No symbol) [0x0x7ff685c28067]\n\t(No symbol) [0x0x7ff685c2832c]\n\t(No symbol) [0x0x7ff685c7be27]\n\t(No symbol) [0x0x7ff685c5074f]\n\t(No symbol) [0x0x7ff685c78b8b]\n\t(No symbol) [0x0x7ff685c504e3]\n\t(No symbol) [0x0x7ff685c18e92]\n\t(No symbol) [0x0x7ff685c19c63]\n\tGetHandleVerifier [0x0x7ff686110dbd+2954061]\n\tGetHandleVerifier [0x0x7ff68610b02a+2930106]\n\tGetHandleVerifier [0x0x7ff68612b357+3061991]\n\tGetHandleVerifier [0x0x7ff685e6d60e+187294]\n\tGetHandleVerifier [0x0x7ff685e7557f+219919]\n\tGetHandleVerifier [0x0x7ff685e5c294+116772]\n\tGetHandleVerifier [0x0x7ff685e5c449+117209]\n\tGetHandleVerifier [0x0x7ff685e42618+11176]\n\tBaseThreadInitThunk [0x0x7ffe5aede8d7+23]\n\tRtlUserThreadStart [0x0x7ffe5bee8d9c+44]\n"
+  ],
+  "project_name": null,
+  "oauth_json_path": null,
+  "completion_time": "2025-09-23 06:51:53"
+}

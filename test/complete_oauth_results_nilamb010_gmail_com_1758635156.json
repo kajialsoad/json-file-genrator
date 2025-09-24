@@ -1,0 +1,15 @@
+{
+  "email": "nilamb010@gmail.com",
+  "timestamp": 1758635094,
+  "status": "completed",
+  "steps_completed": [
+    "driver_setup",
+    "login_completed"
+  ],
+  "errors": [
+    "Project creation failed: Message: element click intercepted: Element <button mat-raised-button=\"\" color=\"primary\" type=\"submit\" class=\"mdc-button mat-mdc-button-base gmat-mdc-button projtest-create-form-submit mat-primary cm-button mdc-button--unelevated mat-mdc-unelevated-button\" mat-ripple-loader-uninitialized=\"\" mat-ripple-loader-class-name=\"mat-mdc-button-ripple\" jslog=\"86740;track:generic_click\">...</button> is not clickable at point (58, 464). Other element would receive the click: <div class=\"cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing\"></div>\n  (Session info: chrome=140.0.7339.128); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception\nStacktrace:\n\tGetHandleVerifier [0x0x7ff685e530f5+79493]\n\tGetHandleVerifier [0x0x7ff685e53150+79584]\n\t(No symbol) [0x0x7ff685bd01ba]\n\t(No symbol) [0x0x7ff685c301f9]\n\t(No symbol) [0x0x7ff685c2db7e]\n\t(No symbol) [0x0x7ff685c2aac1]\n\t(No symbol) [0x0x7ff685c299b0]\n\t(No symbol) [0x0x7ff685c1af58]\n\t(No symbol) [0x0x7ff685c5070a]\n\t(No symbol) [0x0x7ff685c1a7e6]\n\t(No symbol) [0x0x7ff685c50920]\n\t(No symbol) [0x0x7ff685c78b8b]\n\t(No symbol) [0x0x7ff685c504e3]\n\t(No symbol) [0x0x7ff685c18e92]\n\t(No symbol) [0x0x7ff685c19c63]\n\tGetHandleVerifier [0x0x7ff686110dbd+2954061]\n\tGetHandleVerifier [0x0x7ff68610b02a+2930106]\n\tGetHandleVerifier [0x0x7ff68612b357+3061991]\n\tGetHandleVerifier [0x0x7ff685e6d60e+187294]\n\tGetHandleVerifier [0x0x7ff685e7557f+219919]\n\tGetHandleVerifier [0x0x7ff685e5c294+116772]\n\tGetHandleVerifier [0x0x7ff685e5c449+117209]\n\tGetHandleVerifier [0x0x7ff685e42618+11176]\n\tBaseThreadInitThunk [0x0x7ffe5aede8d7+23]\n\tRtlUserThreadStart [0x0x7ffe5bee8d9c+44]\n"
+  ],
+  "project_name": "Gmail-OAuth-nilamb010-1758635094",
+  "oauth_json_path": null,
+  "completion_time": "2025-09-23T06:45:56.111944"
+}

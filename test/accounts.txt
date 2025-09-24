@@ -1,0 +1,4 @@
+# Gmail OAuth Client Generator - Accounts File
+# Format: email:password
+
+nilamb010@gmail.com:,lkjghf9854

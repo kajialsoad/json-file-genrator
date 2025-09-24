@@ -1,0 +1,26 @@
+{
+  "test_email": "nilamb010@gmail.com",
+  "test_password": "Nilam@123",
+  "steps_completed": [
+    "Google Cloud Console Access",
+    "API Library Access"
+  ],
+  "steps_failed": [
+    "Google Login",
+    "Gmail API Enable",
+    "OAuth Credentials Creation"
+  ],
+  "screenshots": [
+    "test_screenshot_google_login_error_1758697199.png",
+    "test_screenshot_cloud_console_access_1758697209.png",
+    "test_screenshot_project_name_input_not_found_1758697243.png",
+    "test_screenshot_api_library_access_1758697257.png",
+    "test_screenshot_gmail_api_error_1758697259.png",
+    "test_screenshot_oauth_credentials_error_1758697278.png"
+  ],
+  "errors": [
+    "Google Login: Message: \nStacktrace:\n\tGetHandleVerifier [0x0x4dc333+65459]\n\tGetHandleVerifier [0x0x4dc374+65524]\n\t(No symbol) [0x0x2fd973]\n\t(No symbol) [0x0x3476e7]\n\t(No symbol) [0x0x347a8b]\n\t(No symbol) [0x0x38dea2]\n\t(No symbol) [0x0x369e44]\n\t(No symbol) [0x0x38b606]\n\t(No symbol) [0x0x369bf6]\n\t(No symbol) [0x0x33b38e]\n\t(No symbol) [0x0x33c274]\n\tGetHandleVerifier [0x0x75eda3+2697763]\n\tGetHandleVerifier [0x0x759ec7+2677575]\n\tGetHandleVerifier [0x0x504194+228884]\n\tGetHandleVerifier [0x0x4f49f8+165496]\n\tGetHandleVerifier [0x0x4fb18d+192013]\n\tGetHandleVerifier [0x0x4e47d8+99416]\n\tGetHandleVerifier [0x0x4e4972+99826]\n\tGetHandleVerifier [0x0x4cebea+10346]\n\tBaseThreadInitThunk [0x0x74c45d49+25]\n\tRtlInitializeExceptionChain [0x0x771fd6db+107]\n\tRtlGetAppContainerNamedObjectPath [0x0x771fd661+561]\n",
+    "Gmail API Enable: Message: To submit an element, it must be nested inside a form element\n",
+    "OAuth Credentials: Message: \nStacktrace:\n\tGetHandleVerifier [0x0x4dc333+65459]\n\tGetHandleVerifier [0x0x4dc374+65524]\n\t(No symbol) [0x0x2fd973]\n\t(No symbol) [0x0x3476e7]\n\t(No symbol) [0x0x347a8b]\n\t(No symbol) [0x0x38dea2]\n\t(No symbol) [0x0x369e44]\n\t(No symbol) [0x0x38b606]\n\t(No symbol) [0x0x369bf6]\n\t(No symbol) [0x0x33b38e]\n\t(No symbol) [0x0x33c274]\n\tGetHandleVerifier [0x0x75eda3+2697763]\n\tGetHandleVerifier [0x0x759ec7+2677575]\n\tGetHandleVerifier [0x0x504194+228884]\n\tGetHandleVerifier [0x0x4f49f8+165496]\n\tGetHandleVerifier [0x0x4fb18d+192013]\n\tGetHandleVerifier [0x0x4e47d8+99416]\n\tGetHandleVerifier [0x0x4e4972+99826]\n\tGetHandleVerifier [0x0x4cebea+10346]\n\tBaseThreadInitThunk [0x0x74c45d49+25]\n\tRtlInitializeExceptionChain [0x0x771fd6db+107]\n\tRtlGetAppContainerNamedObjectPath [0x0x771fd661+561]\n"
+  ]
+}

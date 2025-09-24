@@ -1,0 +1,5 @@
+selenium==4.15.2
+undetected-chromedriver==3.5.4
+requests==2.31.0
+pathlib2==2.3.7
+webdriver-manager==4.0.1

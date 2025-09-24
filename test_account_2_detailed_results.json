@@ -1,0 +1,18 @@
+{
+  "email": "nilamb010@gmail.com",
+  "steps": [
+    "Chrome driver initialized successfully",
+    "Navigated to Google Cloud Console",
+    "Current URL: https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fconsole.cloud.google.com%2F&followup=https%3A%2F%2Fconsole.cloud.google.com%2F&ifkv=AfYwgwVzsFYDjXZsL8xup50aLXUFJo5SSPlMEE5F8h1eLDjHxkzozqZ5Pof0YQKluNi6sVpXEBFjvw&osid=1&passive=1209600&service=cloudconsole&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1392016900%3A1758626023797833",
+    "Email entered with selector: input[type='email']",
+    "Next button clicked with selector: #identifierNext",
+    "Password entered with selector: input[type='password']",
+    "Sign in button clicked with selector: #passwordNext",
+    "Login successful - reached Google Cloud Console",
+    "Screenshot saved: test_account_2_screenshot_1758626046.png"
+  ],
+  "errors": [],
+  "success": true,
+  "final_url": "https://console.cloud.google.com/getting-started",
+  "timestamp": "2025-09-23 04:13:31"
+}

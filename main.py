@@ -1042,56 +1042,287 @@ class GmailOAuthGenerator:
             return False
             
     def create_or_select_project(self, driver, account):
-        """Create or select project"""
+        """Create or select project with comprehensive fallback methods for Google Cloud Console"""
         try:
             self.log_message("🏗️ Creating new Google Cloud project...", "STEP")
             # Generate project ID
             project_id = f"gmail-oauth-{account['email'].split('@')[0]}-{int(time.time())}"
-            
-            # Click on project selector
-            try:
-                project_selector = WebDriverWait(driver, 10).until(
-                    EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-testid='project-switcher-button']"))
-                )
-                project_selector.click()
-            except:
-                # Alternative selector
-                project_selector = driver.find_element(By.CSS_SELECTOR, ".cfc-project-switcher-button")
-                project_selector.click()
-            
-            # Click "New Project"
-            new_project_btn = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//span[contains(text(), 'New Project')]"))
-            )
-            new_project_btn.click()
-            
-            # Enter project name
             project_name = f"Gmail OAuth {account['email'].split('@')[0]}"
+            
+            # Wait for page to fully load
+            time.sleep(3)
+            
+            # Method 1: Try direct navigation first (most reliable)
+            self.log_message("🔄 Using direct navigation to project creation", "STEP")
+            driver.get("https://console.cloud.google.com/projectcreate")
+            time.sleep(8)  # Longer wait for page load
+            
+            # Check if we're redirected to login or if page loaded properly
+            current_url = driver.current_url
+            if "signin" in current_url or "accounts.google.com" in current_url:
+                self.log_message("⚠️ Redirected to login, waiting for authentication...", "DEBUG")
+                time.sleep(10)
+                # Try navigation again after login
+                driver.get("https://console.cloud.google.com/projectcreate")
+                time.sleep(8)
+            
+            # Method 2: If direct navigation fails, try dropdown method
+            if "projectcreate" not in driver.current_url:
+                self.log_message("🔄 Direct navigation failed, trying dropdown method", "STEP")
+                driver.get("https://console.cloud.google.com/")
+                time.sleep(5)
+                
+                # Try to find and click project selector dropdown
+                project_selector_found = False
+                project_selectors = [
+                    "[data-testid='project-switcher-button']",
+                    "[aria-label*='Select a project']", 
+                    "[aria-label*='project']",
+                    ".p6n-project-switcher-button",
+                    ".cfc-project-switcher-button",
+                    "button[aria-haspopup='listbox']",
+                    "//button[contains(@aria-label, 'project')]",
+                    "//button[contains(@aria-label, 'Project')]",
+                    "//div[contains(@class, 'project')]//button",
+                    "//span[contains(text(), 'Select a project')]"
+                ]
+                
+                for selector in project_selectors:
+                    try:
+                        if selector.startswith("//"):
+                            element = WebDriverWait(driver, 3).until(
+                                EC.element_to_be_clickable((By.XPATH, selector))
+                            )
+                        else:
+                            element = WebDriverWait(driver, 3).until(
+                                EC.element_to_be_clickable((By.CSS_SELECTOR, selector))
+                            )
+                        element.click()
+                        self.log_message(f"✅ Found project selector with: {selector}", "DEBUG")
+                        project_selector_found = True
+                        time.sleep(3)
+                        break
+                    except:
+                        continue
+                
+                if project_selector_found:
+                    # Look for "New Project" button
+                    new_project_selectors = [
+                        "//span[contains(text(), 'New Project')]",
+                        "//button[contains(text(), 'New Project')]", 
+                        "//a[contains(text(), 'New Project')]",
+                        "//span[contains(text(), 'NEW PROJECT')]",
+                        "//button[contains(text(), 'Create Project')]",
+                        "//span[contains(text(), 'Create Project')]",
+                        "//div[contains(text(), 'New Project')]",
+                        "//li[contains(text(), 'New Project')]"
+                    ]
+                    
+                    new_project_clicked = False
+                    for selector in new_project_selectors:
+                        try:
+                            new_project_btn = WebDriverWait(driver, 5).until(
+                                EC.element_to_be_clickable((By.XPATH, selector))
+                            )
+                            new_project_btn.click()
+                            self.log_message(f"✅ Clicked New Project with: {selector}", "DEBUG")
+                            new_project_clicked = True
+                            time.sleep(5)
+                            break
+                        except:
+                            continue
+                    
+                    if not new_project_clicked:
+                        self.log_message("⚠️ Could not find New Project button, trying direct URL again", "DEBUG")
+                        driver.get("https://console.cloud.google.com/projectcreate")
+                        time.sleep(8)
+            
+            # Enter project name with comprehensive selector attempts
             self.log_message(f"📝 Creating project with name: {project_name}", "STEP")
-            project_name_input = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.ID, "p6ntest-project-name-input"))
-            )
-            project_name_input.clear()
-            project_name_input.send_keys(project_name)
             
-            # Project ID will be auto-generated, but we can modify if needed
-            time.sleep(2)
+            # Wait for form to load
+            time.sleep(3)
             
-            # Click Create
-            create_btn = driver.find_element(By.XPATH, "//span[contains(text(), 'Create')]/parent::button")
-            create_btn.click()
+            # More comprehensive name input selectors
+            name_selectors = [
+                "p6ntest-project-name-input",
+                "projectId", 
+                "p6n-kp-name-input",
+                "project-name",
+                "projectName",
+                "name",
+                "//input[@placeholder='My Project']",
+                "//input[@placeholder='Project name']",
+                "//input[@placeholder='Enter project name']",
+                "//input[@aria-label='Project name']",
+                "//input[@aria-label='Name']",
+                "//input[contains(@placeholder, 'project')]",
+                "//input[contains(@placeholder, 'Project')]",
+                "//input[contains(@aria-label, 'name')]",
+                "//input[contains(@aria-label, 'Name')]",
+                "//input[@type='text'][1]",
+                "//form//input[@type='text']",
+                "//div[contains(@class, 'project')]//input",
+                "//label[contains(text(), 'Project name')]//following::input",
+                "//label[contains(text(), 'Name')]//following::input"
+            ]
+            
+            name_input_found = False
+            for i, selector in enumerate(name_selectors):
+                try:
+                    self.log_message(f"🔍 Trying selector {i+1}/{len(name_selectors)}: {selector}", "DEBUG")
+                    
+                    if selector.startswith("//"):
+                        project_name_input = WebDriverWait(driver, 3).until(
+                            EC.presence_of_element_located((By.XPATH, selector))
+                        )
+                    else:
+                        project_name_input = WebDriverWait(driver, 3).until(
+                            EC.presence_of_element_located((By.ID, selector))
+                        )
+                    
+                    # Scroll to element if needed
+                    driver.execute_script("arguments[0].scrollIntoView(true);", project_name_input)
+                    time.sleep(1)
+                    
+                    # Clear and enter project name
+                    project_name_input.clear()
+                    project_name_input.send_keys(project_name)
+                    
+                    # Verify text was entered
+                    if project_name_input.get_attribute('value') == project_name:
+                        self.log_message(f"✅ Successfully entered project name with: {selector}", "DEBUG")
+                        name_input_found = True
+                        time.sleep(2)
+                        break
+                    else:
+                        self.log_message(f"⚠️ Text not entered properly with: {selector}", "DEBUG")
+                        
+                except Exception as e:
+                    self.log_message(f"❌ Failed with selector {selector}: {str(e)}", "DEBUG")
+                    continue
+            
+            if not name_input_found:
+                # Try to find any input field and use it
+                self.log_message("🔍 Trying to find any input field on the page", "DEBUG")
+                try:
+                    all_inputs = driver.find_elements(By.TAG_NAME, "input")
+                    for input_elem in all_inputs:
+                        if input_elem.is_displayed() and input_elem.is_enabled():
+                            input_type = input_elem.get_attribute('type')
+                            if input_type in ['text', 'search', None]:
+                                input_elem.clear()
+                                input_elem.send_keys(project_name)
+                                if input_elem.get_attribute('value') == project_name:
+                                    self.log_message("✅ Found working input field", "DEBUG")
+                                    name_input_found = True
+                                    break
+                except:
+                    pass
+            
+            if not name_input_found:
+                # Take a screenshot for debugging
+                screenshot_path = f"debug_project_creation_{int(time.time())}.png"
+                driver.save_screenshot(screenshot_path)
+                self.log_message(f"📸 Screenshot saved: {screenshot_path}", "DEBUG")
+                raise Exception("Could not find project name input field after trying all selectors")
+            
+            # Click Create button with comprehensive selector attempts
+            self.log_message("🔘 Looking for Create button...", "STEP")
+            create_selectors = [
+                "//span[contains(text(), 'Create')]/parent::button",
+                "//button[contains(text(), 'Create')]",
+                "//button[contains(text(), 'CREATE')]",
+                "//input[@value='Create']",
+                "//button[@type='submit']",
+                "//span[contains(text(), 'Create')]",
+                "button[aria-label='Create']",
+                "//button[contains(@class, 'create')]",
+                "//button[contains(@class, 'Create')]",
+                "//div[contains(text(), 'Create')]//parent::button",
+                "//form//button[last()]",
+                "//button[contains(@aria-label, 'Create')]"
+            ]
+            
+            create_clicked = False
+            for i, selector in enumerate(create_selectors):
+                try:
+                    self.log_message(f"🔍 Trying Create button selector {i+1}/{len(create_selectors)}: {selector}", "DEBUG")
+                    
+                    if selector.startswith("//"):
+                        create_btn = WebDriverWait(driver, 3).until(
+                            EC.element_to_be_clickable((By.XPATH, selector))
+                        )
+                    else:
+                        create_btn = WebDriverWait(driver, 3).until(
+                            EC.element_to_be_clickable((By.CSS_SELECTOR, selector))
+                        )
+                    
+                    # Scroll to button
+                    driver.execute_script("arguments[0].scrollIntoView(true);", create_btn)
+                    time.sleep(1)
+                    
+                    create_btn.click()
+                    self.log_message(f"✅ Successfully clicked Create button with: {selector}", "DEBUG")
+                    create_clicked = True
+                    break
+                except Exception as e:
+                    self.log_message(f"❌ Failed with Create selector {selector}: {str(e)}", "DEBUG")
+                    continue
+            
+            if not create_clicked:
+                # Try to find any button and click it
+                self.log_message("🔍 Trying to find any clickable button", "DEBUG")
+                try:
+                    all_buttons = driver.find_elements(By.TAG_NAME, "button")
+                    for button in all_buttons:
+                        if button.is_displayed() and button.is_enabled():
+                            button_text = button.text.lower()
+                            if 'create' in button_text or 'submit' in button_text:
+                                button.click()
+                                self.log_message(f"✅ Clicked button with text: {button.text}", "DEBUG")
+                                create_clicked = True
+                                break
+                except:
+                    pass
+            
+            if not create_clicked:
+                raise Exception("Could not find or click Create button")
             
             self.log_message("⏳ Waiting for project creation to complete...", "STEP")
-            # Wait for project creation
-            WebDriverWait(driver, 30).until(
-                lambda d: "Project created" in d.page_source or "dashboard" in d.current_url.lower()
-            )
+            # Wait for project creation with multiple success indicators
+            try:
+                WebDriverWait(driver, 60).until(  # Increased timeout
+                    lambda d: any([
+                        "Project created" in d.page_source,
+                        "dashboard" in d.current_url.lower(),
+                        "getting-started" in d.current_url.lower(),
+                        "console.cloud.google.com/home" in d.current_url,
+                        "apis/dashboard" in d.current_url,
+                        "welcome" in d.current_url.lower(),
+                        "project" in d.current_url and "create" not in d.current_url
+                    ])
+                )
+            except:
+                # Additional wait and check
+                time.sleep(15)
+                current_url = driver.current_url
+                if "console.cloud.google.com" in current_url and "create" not in current_url:
+                    self.log_message("✅ Project creation appears successful (URL check)", "DEBUG")
+                else:
+                    # Take screenshot for debugging
+                    screenshot_path = f"debug_project_timeout_{int(time.time())}.png"
+                    driver.save_screenshot(screenshot_path)
+                    self.log_message(f"📸 Timeout screenshot saved: {screenshot_path}", "DEBUG")
+                    raise Exception("Project creation timeout - no success indicators found")
             
             self.log_message(f"✅ Project created successfully: {project_name}", "SUCCESS")
+            self.log_message(f"📍 Project ID result: {project_id}", "DEBUG")
             return project_id
             
         except Exception as e:
             self.log_message(f"❌ Error creating project: {e}", "ERROR")
+            self.log_message(f"📍 Project ID result: None", "DEBUG")
             self.status_var.set(f"Project creation error: {str(e)}")
             return None
             

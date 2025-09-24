@@ -1,0 +1,10 @@
+{
+  "email": "nilamb010@gmail.com",
+  "timestamp": "2025-09-23T06:25:45.492362",
+  "steps_completed": [],
+  "errors": [
+    "Driver setup failed: Message: invalid argument: cannot parse capability: goog:chromeOptions\nfrom invalid argument: unrecognized chrome option: useAutomationExtension\nStacktrace:\n\tGetHandleVerifier [0x0x440c13+66051]\n\tGetHandleVerifier [0x0x440c54+66116]\n\t(No symbol) [0x0x21db33]\n\t(No symbol) [0x0x246053]\n\t(No symbol) [0x0x247810]\n\t(No symbol) [0x0x24288a]\n\t(No symbol) [0x0x294552]\n\t(No symbol) [0x0x294026]\n\t(No symbol) [0x0x295760]\n\t(No symbol) [0x0x29555a]\n\t(No symbol) [0x0x289d86]\n\t(No symbol) [0x0x25b53e]\n\t(No symbol) [0x0x25c414]\n\tGetHandleVerifier [0x0x688a13+2457603]\n\tGetHandleVerifier [0x0x6839d2+2437058]\n\tGetHandleVerifier [0x0x4697f2+232930]\n\tGetHandleVerifier [0x0x459a18+167944]\n\tGetHandleVerifier [0x0x46092d+196381]\n\tGetHandleVerifier [0x0x448ee8+99544]\n\tGetHandleVerifier [0x0x449082+99954]\n\tGetHandleVerifier [0x0x43322a+10266]\n\tBaseThreadInitThunk [0x0x74c45d49+25]\n\tRtlInitializeExceptionChain [0x0x771fd6db+107]\n\tRtlGetAppContainerNamedObjectPath [0x0x771fd661+561]\n"
+  ],
+  "success": false,
+  "json_file_path": null
+}
